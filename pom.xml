@@ -58,6 +58,12 @@
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+    <!--mysql-->
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-mysql-client</artifactId>
+      <version>4.3.1</version>
+    </dependency>
   </dependencies>
 
   <build>
