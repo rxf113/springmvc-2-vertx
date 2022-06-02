@@ -17,10 +17,10 @@ public class MysqlProcessor implements InitProcessor {
   public boolean init(Vertx vertx) {
     MySQLConnectOptions connectOptions = new MySQLConnectOptions()
       .setPort(3306)
-      .setHost("the-host")
-      .setDatabase("the-db")
-      .setUser("user")
-      .setPassword("secret");
+      .setHost("127.0.0.1")
+      .setDatabase("rxf113")
+      .setUser("root")
+      .setPassword("1131310577");
 
 // Pool options
     PoolOptions poolOptions = new PoolOptions()

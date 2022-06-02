@@ -5,6 +5,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
+import io.vertx.sqlclient.Row;
 
 /**
  * @author rxf113
@@ -48,7 +49,7 @@ public class MainVerticle extends AbstractVerticle {
 
       // All operations execute on the same connection
       return conn
-        .query("SELECT * FROM users WHERE id='julien'")
+        .query("SELECT * FROM user WHERE id='50'")
         .execute()
         .onComplete(ar -> {
           // Release the connection to the pool
@@ -56,6 +57,9 @@ public class MainVerticle extends AbstractVerticle {
         });
     }).onComplete(ar -> {
       if (ar.succeeded()) {
+        for (Row row : ar.result()) {
+          System.out.println(row);
+        }
         System.out.println("Done");
       } else {
         System.out.println("Something went wrong " + ar.cause().getMessage());
