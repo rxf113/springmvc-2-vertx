@@ -92,7 +92,7 @@ public class MainVerticle extends AbstractVerticle {
     assert files != null;
     for (File file1 : files) {
       if (file1.isFile()) {
-        //判断是不是Controller结尾
+        //判断是不是Controller结尾 todo 注解判断
         if (file1.getPath().endsWith("Controller.class")) {
           list.add(file1.getPath());
         }
