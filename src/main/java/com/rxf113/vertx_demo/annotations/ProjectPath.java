@@ -12,6 +12,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface ProjectPath {
 
-  String basePackage() default "";
+  String value() default "";
 
 }
