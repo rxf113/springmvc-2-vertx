@@ -22,7 +22,7 @@ public class DemoController {
     //todo 后续简化
     routingContext.response()
       .putHeader("content-type", "application/json; charset=utf-8")
-      .end(Json.encodePrettily(new HashMap<>() {{
+      .end(Json.encodePrettily(new HashMap<String,Object>() {{
         put("key", 123);
       }}));
   }
