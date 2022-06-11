@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-
 /**
  * controller
  *
@@ -29,6 +27,8 @@ public class DemoController {
   @GetMapping("test")
   public Object test(@RequestParam(value = "val") String val) {
     System.out.println(val);
-    return new HashMap<String,Object>(){{put("val","rxf113");}};
+    return "success!" + val;
   }
+
+
 }
