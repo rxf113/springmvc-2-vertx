@@ -1,5 +1,6 @@
-package com.rxf113.vertx_demo.springmvc;
+package com.rxf113.vertx_demo.springmvc.processor.mvc2router;
 
+import com.rxf113.vertx_demo.exception.Springmvc2RouterException;
 import io.vertx.core.Vertx;
 import io.vertx.ext.web.Router;
 import org.springframework.core.io.Resource;
@@ -16,12 +17,6 @@ import java.util.Set;
  * @author rxf113
  */
 public interface Springmvc2RouterProcessor {
-
-  class Springmvc2RouterException extends RuntimeException {
-    public Springmvc2RouterException(String message, Throwable cause) {
-      super(message, cause);
-    }
-  }
 
   CachingMetadataReaderFactory METADATA_READER_FACTORY = new CachingMetadataReaderFactory();
 
@@ -51,7 +46,7 @@ public interface Springmvc2RouterProcessor {
    * @param vertx   vertx
    * @return Router
    */
-  Router convertClasses2Router(List<Class<?>> classes, Vertx vertx) throws InvocationTargetException, InstantiationException, IllegalAccessException;
+  Router convertClasses2Router(List<Class<?>> classes, Vertx vertx) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException;
 
   /**
    * 1 获取项目基础包路径拓展

@@ -1,8 +1,8 @@
 package com.rxf113.vertx_demo;
 
 import com.rxf113.vertx_demo.annotations.ProjectPath;
-import com.rxf113.vertx_demo.springmvc.BaseSpringmvc2RouterProcessorImpl;
-import com.rxf113.vertx_demo.springmvc.Springmvc2RouterProcessor;
+import com.rxf113.vertx_demo.springmvc.processor.mvc2router.BaseSpringmvc2RouterProcessorImpl;
+import com.rxf113.vertx_demo.springmvc.processor.mvc2router.Springmvc2RouterProcessor;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.ext.web.Router;
@@ -16,7 +16,7 @@ public class MainVerticle extends AbstractVerticle {
   Springmvc2RouterProcessor springmvc2RouterProcessor = new BaseSpringmvc2RouterProcessorImpl();
 
   @Override
-  public void start(Promise<Void> startPromise) throws Exception {
+  public void start(Promise<Void> startPromise) {
     //启动web监听 类似controller
     startWebApp(startPromise);
   }
@@ -25,9 +25,11 @@ public class MainVerticle extends AbstractVerticle {
     //扫描controller 获得router
     ProjectPath annotation = this.getClass().getAnnotation(ProjectPath.class);
     String path = annotation.value();
+
+    //将springmvc方式的controller 转为vertx router
     Router router = springmvc2RouterProcessor.controller2Router(path, vertx);
 
-    // Create the HTTP server and pass the "accept" method to the request handler.
+    //创建启动服务器
     vertx.createHttpServer()
       .requestHandler(router)
       .listen(8080,
