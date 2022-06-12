@@ -20,7 +20,6 @@ public class PathVariableProcessor implements ParameterAnnotationProcessor {
     }
     //如果为空，取方法参数名
     return converter.convertIfNecessary(param, parameter.getType());
-
   }
 
   private String getParamName(PathVariable pathVariable, Parameter parameter) {

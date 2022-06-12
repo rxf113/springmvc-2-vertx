@@ -36,6 +36,22 @@ import static com.rxf113.springmvc2vertx.util.ConstantUtil.PATH_SEPARATOR;
  */
 public class BaseSpringmvc2RouterProcessorImpl implements Springmvc2RouterProcessor {
 
+  Map<Class<? extends Annotation>, ParameterAnnotationProcessor> annotation2ProcessorMap = new HashMap<>(4, 1);
+
+  public BaseSpringmvc2RouterProcessorImpl() {
+    //初始化参数绑定注解及对应的处理类
+    RequestParamProcessor requestParamProcessor = new RequestParamProcessor();
+    PathVariableProcessor pathVariableProcessor = new PathVariableProcessor();
+
+    // RequestParam注解
+    annotation2ProcessorMap.put(null, requestParamProcessor);
+    annotation2ProcessorMap.put(RequestParam.class, requestParamProcessor);
+
+    // PathVariable注解
+    annotation2ProcessorMap.put(PathVariable.class, pathVariableProcessor);
+  }
+
+
   @Override
   public Router convertClasses2Router(List<Class<?>> classes, Vertx vertx) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
     Router router = Router.router(vertx);
@@ -212,19 +228,6 @@ public class BaseSpringmvc2RouterProcessorImpl implements Springmvc2RouterProces
       }
     }
     return Optional.empty();
-  }
-
-  Map<Class<? extends Annotation>, ParameterAnnotationProcessor> annotation2ProcessorMap = new HashMap<>(4, 1);
-
-  {
-    RequestParamProcessor requestParamProcessor = new RequestParamProcessor();
-    PathVariableProcessor pathVariableProcessor = new PathVariableProcessor();
-    // RequestParam注解
-    annotation2ProcessorMap.put(null, requestParamProcessor);
-    annotation2ProcessorMap.put(RequestParam.class, requestParamProcessor);
-
-    // PathVariable注解
-    annotation2ProcessorMap.put(PathVariable.class, pathVariableProcessor);
   }
 
   private ParameterAnnotationProcessor getParameterBindAnnotationProcessor(Annotation parameterBindAnnotation) {
