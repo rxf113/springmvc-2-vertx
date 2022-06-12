@@ -4,6 +4,7 @@ import io.vertx.ext.web.RoutingContext;
 import org.springframework.beans.SimpleTypeConverter;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Parameter;
 
 /**
  * 参数绑定注解的处理类
@@ -15,5 +16,5 @@ public interface ParameterAnnotationProcessor {
    */
   SimpleTypeConverter converter = new SimpleTypeConverter();
 
-  Object getParameter(RoutingContext routingContext, Annotation annotation, Class<?> parameterTypeCla);
+  Object getRealParameterVal(RoutingContext routingContext, Annotation annotation, Parameter parameter);
 }

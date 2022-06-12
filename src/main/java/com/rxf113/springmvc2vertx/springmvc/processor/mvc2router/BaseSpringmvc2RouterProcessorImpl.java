@@ -2,6 +2,7 @@ package com.rxf113.springmvc2vertx.springmvc.processor.mvc2router;
 
 import com.rxf113.springmvc2vertx.exception.Springmvc2RouterException;
 import com.rxf113.springmvc2vertx.springmvc.processor.parameter.ParameterAnnotationProcessor;
+import com.rxf113.springmvc2vertx.springmvc.processor.parameter.PathVariableProcessor;
 import com.rxf113.springmvc2vertx.springmvc.processor.parameter.RequestParamProcessor;
 import com.rxf113.springmvc2vertx.util.StringUtil;
 import io.vertx.core.Vertx;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.net.URL;
 import java.util.*;
 
@@ -60,7 +62,6 @@ public class BaseSpringmvc2RouterProcessorImpl implements Springmvc2RouterProces
         //暂时只考虑单个参数
         String methodMappingVal;
         if (annotation.annotationType().equals(GetMapping.class)) {
-
           methodMappingVal = method.getAnnotation(GetMapping.class).value()[0];
         } else if (annotation.annotationType().equals(PostMapping.class)) {
           methodMappingVal = method.getAnnotation(PostMapping.class).value()[0];
@@ -96,10 +97,10 @@ public class BaseSpringmvc2RouterProcessorImpl implements Springmvc2RouterProces
 
           int parameterCount = method.getParameterCount();
 
-          //村粗 method 方法的实际的参数
+          //存储 method 方法的实际的参数
           Object[] realParams = new Object[parameterCount];
 
-          Class<?>[] parameterTypes = method.getParameterTypes();
+          Parameter[] parameters = method.getParameters();
 
           Annotation[][] parameterAnnotations = method.getParameterAnnotations();
 
@@ -114,7 +115,7 @@ public class BaseSpringmvc2RouterProcessorImpl implements Springmvc2RouterProces
             //获取ParameterBindAnnotationProcessor 如 RequestParamProcessor(RequestParam注解对应的处理类)
             ParameterAnnotationProcessor parameterAnnotationProcessor = getParameterBindAnnotationProcessor(parameterBindAnnotation);
             //获取实际的参数
-            Object res = parameterAnnotationProcessor.getParameter(routingContext, parameterBindAnnotation, parameterTypes[i]);
+            Object res = parameterAnnotationProcessor.getRealParameterVal(routingContext, parameterBindAnnotation, parameters[i]);
             realParams[i] = res;
           }
 
@@ -217,9 +218,13 @@ public class BaseSpringmvc2RouterProcessorImpl implements Springmvc2RouterProces
 
   {
     RequestParamProcessor requestParamProcessor = new RequestParamProcessor();
-    // =======
+    PathVariableProcessor pathVariableProcessor = new PathVariableProcessor();
+    // RequestParam注解
     annotation2ProcessorMap.put(null, requestParamProcessor);
     annotation2ProcessorMap.put(RequestParam.class, requestParamProcessor);
+
+    // PathVariable注解
+    annotation2ProcessorMap.put(PathVariable.class, pathVariableProcessor);
   }
 
   private ParameterAnnotationProcessor getParameterBindAnnotationProcessor(Annotation parameterBindAnnotation) {

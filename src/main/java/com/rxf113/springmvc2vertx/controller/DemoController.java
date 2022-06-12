@@ -1,9 +1,6 @@
 package com.rxf113.springmvc2vertx.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * controller
@@ -28,6 +25,12 @@ public class DemoController {
   public Object test(@RequestParam(value = "val") String val) {
     System.out.println(val);
     return "success!" + val;
+  }
+
+  @GetMapping("path/{id}")
+  public Object path(@PathVariable(value = "id") String id) {
+    System.out.println(id);
+    return "success!" + id;
   }
 
 

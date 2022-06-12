@@ -16,8 +16,8 @@ public class StringUtil {
    * @return
    */
   public static String uriSlashOpt(String pre, String next) {
-    pre = pre.replace("/", "");
-    next = next.replace("/", "");
+    pre = pre.replaceAll("^(/)|(/)$", "");
+    next = next.replaceAll("^(/)|(/)$", "");
     return "/" + pre + "/" + next;
   }
 }
