@@ -1,8 +1,8 @@
-package com.rxf113.vertx_demo;
+package com.rxf113.springmvc2vertx;
 
-import com.rxf113.vertx_demo.annotations.ProjectPath;
-import com.rxf113.vertx_demo.springmvc.processor.mvc2router.BaseSpringmvc2RouterProcessorImpl;
-import com.rxf113.vertx_demo.springmvc.processor.mvc2router.Springmvc2RouterProcessor;
+import com.rxf113.springmvc2vertx.annotations.ProjectPath;
+import com.rxf113.springmvc2vertx.springmvc.processor.mvc2router.BaseSpringmvc2RouterProcessorImpl;
+import com.rxf113.springmvc2vertx.springmvc.processor.mvc2router.Springmvc2RouterProcessor;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.ext.web.Router;
@@ -10,7 +10,7 @@ import io.vertx.ext.web.Router;
 /**
  * @author rxf113
  */
-@ProjectPath(value = "com.rxf113.vertx_demo")
+@ProjectPath(value = "com.rxf113.springmvc2vertx")
 public class MainVerticle extends AbstractVerticle {
 
   Springmvc2RouterProcessor springmvc2RouterProcessor = new BaseSpringmvc2RouterProcessorImpl();

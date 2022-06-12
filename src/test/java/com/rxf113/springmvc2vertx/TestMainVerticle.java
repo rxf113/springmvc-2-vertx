@@ -1,4 +1,4 @@
-package com.rxf113.vertx_demo;
+package com.rxf113.springmvc2vertx;
 
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;

@@ -1,6 +1,6 @@
-package com.rxf113.vertx_demo.springmvc.processor.mvc2router;
+package com.rxf113.springmvc2vertx.springmvc.processor.mvc2router;
 
-import com.rxf113.vertx_demo.exception.Springmvc2RouterException;
+import com.rxf113.springmvc2vertx.exception.Springmvc2RouterException;
 import io.vertx.core.Vertx;
 import io.vertx.ext.web.Router;
 import org.springframework.core.io.Resource;

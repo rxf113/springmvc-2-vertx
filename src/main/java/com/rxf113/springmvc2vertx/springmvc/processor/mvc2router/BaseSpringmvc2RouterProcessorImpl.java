@@ -1,9 +1,9 @@
-package com.rxf113.vertx_demo.springmvc.processor.mvc2router;
+package com.rxf113.springmvc2vertx.springmvc.processor.mvc2router;
 
-import com.rxf113.vertx_demo.exception.Springmvc2RouterException;
-import com.rxf113.vertx_demo.springmvc.processor.parameter.ParameterAnnotationProcessor;
-import com.rxf113.vertx_demo.springmvc.processor.parameter.RequestParamProcessor;
-import com.rxf113.vertx_demo.util.StringUtil;
+import com.rxf113.springmvc2vertx.exception.Springmvc2RouterException;
+import com.rxf113.springmvc2vertx.springmvc.processor.parameter.ParameterAnnotationProcessor;
+import com.rxf113.springmvc2vertx.springmvc.processor.parameter.RequestParamProcessor;
+import com.rxf113.springmvc2vertx.util.StringUtil;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.Route;
@@ -24,8 +24,8 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.*;
 
-import static com.rxf113.vertx_demo.util.ConstantUtil.PACKAGE_SEPARATOR;
-import static com.rxf113.vertx_demo.util.ConstantUtil.PATH_SEPARATOR;
+import static com.rxf113.springmvc2vertx.util.ConstantUtil.PACKAGE_SEPARATOR;
+import static com.rxf113.springmvc2vertx.util.ConstantUtil.PATH_SEPARATOR;
 
 /**
  * 基础实现

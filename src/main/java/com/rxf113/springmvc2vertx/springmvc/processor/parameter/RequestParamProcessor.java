@@ -1,4 +1,4 @@
-package com.rxf113.vertx_demo.springmvc.processor.parameter;
+package com.rxf113.springmvc2vertx.springmvc.processor.parameter;
 
 import io.vertx.ext.web.RoutingContext;
 import org.springframework.web.bind.annotation.RequestParam;

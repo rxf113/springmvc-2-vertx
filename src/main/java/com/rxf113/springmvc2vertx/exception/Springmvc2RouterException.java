@@ -1,4 +1,4 @@
-package com.rxf113.vertx_demo.exception;
+package com.rxf113.springmvc2vertx.exception;
 
 public class Springmvc2RouterException extends RuntimeException {
   public Springmvc2RouterException(String message, Throwable cause) {

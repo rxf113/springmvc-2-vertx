@@ -1,4 +1,4 @@
-package com.rxf113.vertx_demo.util;
+package com.rxf113.springmvc2vertx.util;
 
 /**
  * 常量

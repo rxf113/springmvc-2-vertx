@@ -1,4 +1,4 @@
-package com.rxf113.vertx_demo.controller;
+package com.rxf113.springmvc2vertx.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

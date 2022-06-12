@@ -1,4 +1,4 @@
-package com.rxf113.vertx_demo.annotations;
+package com.rxf113.springmvc2vertx.annotations;
 
 import java.lang.annotation.*;
 

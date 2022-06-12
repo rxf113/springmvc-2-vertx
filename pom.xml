@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.rxf113</groupId>
-  <artifactId>vertx-spring-demo</artifactId>
+  <artifactId>springmvc-2-vertx</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
@@ -19,7 +19,7 @@
     <vertx.version>4.3.1</vertx.version>
     <junit-jupiter.version>5.7.0</junit-jupiter.version>
 
-    <main.verticle>com.rxf113.vertx_demo.MainVerticle</main.verticle>
+    <main.verticle>com.rxf113.springmvc2vertx.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
   </properties>
 
