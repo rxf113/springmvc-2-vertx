@@ -7,7 +7,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
 
 /**
- * 参数绑定注解的处理类
+ * 参数绑定注解的处理类, 功能: 获取实际的参数
  */
 public interface ParameterAnnotationProcessor {
 

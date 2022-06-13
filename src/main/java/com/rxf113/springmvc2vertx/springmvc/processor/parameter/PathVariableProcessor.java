@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
 
+/**
+ * PathVariable注解的参数获取
+ */
 public class PathVariableProcessor implements ParameterAnnotationProcessor {
 
   @Override
   public Object getRealParameterVal(RoutingContext routingContext, Annotation annotation, Parameter parameter) {
-
     PathVariable pathVariable = (PathVariable) annotation;
     String paramName = getParamName(pathVariable, parameter);
     String param = routingContext.request().getParam(paramName);

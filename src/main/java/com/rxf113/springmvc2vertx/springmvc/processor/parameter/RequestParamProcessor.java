@@ -8,14 +8,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
 
 /**
- * RequestParam 注解的处理类
+ * RequestParam 注解的参数获取
  */
 public class RequestParamProcessor implements ParameterAnnotationProcessor {
 
 
   @Override
   public Object getRealParameterVal(RoutingContext routingContext, Annotation annotation, Parameter parameter) {
-
     RequestParam requestParam = (RequestParam) annotation;
     String paramName = getParamName(requestParam, parameter);
     String param = routingContext.request().getParam(paramName);
